@@ -18,8 +18,8 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-          <body className={`${inter.className} flex`}>
-            <div className="w-[15%] h-screen">
+          <body className={`${inter.className} flex justify-start`}>
+            <div className="w-[15%] h-screen"> 
                 <Sidebar />
             </div>
             <div className="w-full px-20 py-10">

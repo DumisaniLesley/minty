@@ -55,7 +55,7 @@ const Sidebar = () => {
                 {data.map((item, index) => (
                     <Link key={index} href={item.link} className='flex gap-2 items-center hover:bg-green-400 rounded-full py-2 px-4'>
                         {item.icon}
-                        <span className='text-lg font-bold'>{item.name}</span>
+                        <span className='text-[14px] font-bold'>{item.name}</span>
                     </Link>
                 ))}
                
@@ -63,18 +63,9 @@ const Sidebar = () => {
                 {data2.map((item, index) => (
                     <Link key={index} href={item.link} className='flex gap-2 items-center hover:bg-green-400 rounded-full py-2 px-4'>
                         {item.icon}
-                        <span className='text-lg font-bold'>{item.name}</span>
+                        <span className='text-[14px] font-bold'>{item.name}</span>
                     </Link>
                 ))}
-            </div>
-        </div>
-        <div>
-            <div className='bg-green-600 rounded-lg py-6 px-4'>
-                <h2 className='text-sm font-bold text-center'>Need help?</h2>
-                <h4 className='text-[14px] font-bold text-center'>Feel Free to Contact Us</h4>
-                <div className='mt-4'>
-                    <Button className='w-full'>Contact Us</Button>
-                </div>
             </div>
         </div>
     </div>
