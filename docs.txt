@@ -1,0 +1,59 @@
+Primary Colors
+ - Light Theme
+ #ffffff
+ #f3f3f3
+ - Dark Theme
+ #11121e
+ #1d1d29
+
+Secondary Colors
+#ffbc11
+#4578f9
+#43b430
+#cb3eff
+
+Typography Colors
+#ffffff
+#787878
+#000000
+
+Font Family
+-> Inter
+
+Font Size
+14px
+16px
+20px
+36px
+48px
+
+Font Weight
+-> regular
+-> medium
+-> Semi bold
+
+Dashboard Layout
+-> Sidebar
+-> Header
+-> Main Section(page)
+
+Components
+-> Sidebar
+-> Header
+-> Analytics (Dashboard Homepage)
+-> Other Pages
+
+Others
+-> Icons
+-> Charts
+-> Animations
+
+Tech Stack
+-> Next.js 14 (Front-End) 
+-> Typrscript
+-> Clerk ( authentication )
+-> Tailwind (CSS Framework)
+-> Shadcn (UI Components)
+-> React icons or Lucide Icons
+-> Database (Supabase or Firebase)
+
