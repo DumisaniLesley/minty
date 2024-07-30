@@ -48,9 +48,9 @@ const Sidebar = () => {
   return (
     <div className='hidden md:flex md:flex-col h-screen py-10 px-10 justify-between shadow-lg dark:shadow-gray-400 '>
         <div className='flex flex-col'>
-            <div className='mb-10 w-full'>
-                <Image src='/assets/minty.png' width={500} height={500} alt='logo' />
-            </div>
+            <Link href='/dashboard' className='mb-10 w-full'>
+                <Image src='/assets/minty.png' width={200} height={100} alt='logo' />
+            </Link>
             <div className='flex flex-col gap-4 '>
                 {data.map((item, index) => (
                     <Link key={index} href={item.link} className='flex gap-2 items-center hover:bg-green-400 rounded-full py-2 px-4'>

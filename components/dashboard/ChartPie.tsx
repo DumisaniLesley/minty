@@ -25,60 +25,52 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-const desktopData = [
-  { month: "january", desktop: 186, fill: "var(--color-january)" },
-  { month: "february", desktop: 305, fill: "var(--color-february)" },
-  { month: "march", desktop: 237, fill: "var(--color-march)" },
-  { month: "april", desktop: 173, fill: "var(--color-april)" },
-  { month: "may", desktop: 209, fill: "var(--color-may)" },
-  { month: "june", desktop: 214, fill: "var(--color-june)" },
+
+const expenseData = [
+  { category: "Food", price: 23000, fill: "var(--color-food)" },
+  { category: "Groceries", price: 15000, fill: "var(--color-groceries)" },
+  { category: "Rent", price: 45000, fill: "var(--color-rent)" },
+  { category: "Utilities", price: 8000, fill: "var(--color-utilities)" },
+  { category: "Entertainment", price: 12000, fill: "var(--color-entertainment)" },
+  { category: "Transportation", price: 10000, fill: "var(--color-transportation)" },
 ]
 
 const chartConfig = {
-  visitors: {
-    label: "Visitors",
-  },
-  desktop: {
-    label: "Desktop",
-  },
-  mobile: {
-    label: "Mobile",
-  },
-  january: {
-    label: "January",
+  food: {
+    label: "Food",
     color: "hsl(var(--chart-1))",
   },
-  february: {
-    label: "February",
+  groceries: {
+    label: "Groceries",
     color: "hsl(var(--chart-2))",
   },
-  march: {
-    label: "March",
+  rent: {
+    label: "Rent",
     color: "hsl(var(--chart-3))",
   },
-  april: {
-    label: "April",
+  utilities: {
+    label: "Utilities",
     color: "hsl(var(--chart-4))",
   },
-  may: {
-    label: "May",
+  entertainment: {
+    label: "Entertainment",
     color: "hsl(var(--chart-5))",
   },
-  june: {
-    label: "June",
+  transportation: {
+    label: "Transportation",
     color: "hsl(var(--chart-6))",
   },
 } satisfies ChartConfig
 
 const ChartPie = () => {
   const id = "pie-interactive"
-  const [activeMonth, setActiveMonth] = React.useState(desktopData[0].month)
+  const [activeCategory, setActiveCategory] = React.useState(expenseData[0].category)
 
   const activeIndex = React.useMemo(
-    () => desktopData.findIndex((item) => item.month === activeMonth),
-    [activeMonth]
+    () => expenseData.findIndex((item) => item.category === activeCategory),
+    [activeCategory]
   )
-  const months = React.useMemo(() => desktopData.map((item) => item.month), [])
+  const categories = React.useMemo(() => expenseData.map((item) => item.category), [])
 
   return (
     <Card data-chart={id} className="flex flex-col">
@@ -88,16 +80,16 @@ const ChartPie = () => {
           <CardTitle>Expense by Category</CardTitle>
           <CardDescription>January - June 2024</CardDescription>
         </div>
-        <Select value={activeMonth} onValueChange={setActiveMonth}>
+        <Select value={activeCategory} onValueChange={setActiveCategory}>
           <SelectTrigger
             className="ml-auto h-7 w-[130px] rounded-lg pl-2.5"
             aria-label="Select a value"
           >
-            <SelectValue placeholder="Select month" />
+            <SelectValue placeholder="Select category" />
           </SelectTrigger>
           <SelectContent align="end" className="rounded-xl">
-            {months.map((key) => {
-              const config = chartConfig[key as keyof typeof chartConfig]
+            {categories.map((key) => {
+              const config = chartConfig[key.toLowerCase() as keyof typeof chartConfig]
 
               if (!config) {
                 return null
@@ -113,7 +105,7 @@ const ChartPie = () => {
                     <span
                       className="flex h-3 w-3 shrink-0 rounded-sm"
                       style={{
-                        backgroundColor: `var(--color-${key})`,
+                        backgroundColor: `var(--color-${key.toLowerCase()})`,
                       }}
                     />
                     {config?.label}
@@ -136,9 +128,9 @@ const ChartPie = () => {
               content={<ChartTooltipContent hideLabel />}
             />
             <Pie
-              data={desktopData}
-              dataKey="desktop"
-              nameKey="month"
+              data={expenseData}
+              dataKey="price"
+              nameKey="category"
               innerRadius={60}
               strokeWidth={5}
               activeIndex={activeIndex}
@@ -169,16 +161,16 @@ const ChartPie = () => {
                         <tspan
                           x={viewBox.cx}
                           y={viewBox.cy}
-                          className="fill-foreground text-3xl font-bold"
+                          className="fill-foreground text-2xl font-bold"
                         >
-                          {desktopData[activeIndex].desktop.toLocaleString()}
+                          {"$ " + expenseData[activeIndex].price.toLocaleString()}
                         </tspan>
                         <tspan
                           x={viewBox.cx}
                           y={(viewBox.cy || 0) + 24}
                           className="fill-muted-foreground"
                         >
-                          Visitors
+                          Price
                         </tspan>
                       </text>
                     )
