@@ -10,7 +10,7 @@ import ChartMixed from "@/components/dashboard/ChartMixed"
 
 const Dashboard = () => {
   return (
-    <div className="py-4 h-full flex flex-col gap-8 overflow-y-scroll scrollbar-hide">
+    <div className="py-4 h-full flex flex-col gap-8 overflow-y-scroll scrollbar-hide pb-40">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className='grid grid-cols-1 md:grid-cols-2 gap-5'>
             <ChartBarHorizontal />

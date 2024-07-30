@@ -30,7 +30,7 @@ const Header = () => {
   const { setTheme } = useTheme();
   const [date, setDate] = React.useState<Date>();
   return (
-    <div className="flex justify-between mb-10">
+    <div className="flex justify-between mb-0 lg:mb-10 overflow-hidden pb-4">
       <div className="flex gap-4 items-center">
         <div className="text-2xl font-bold">Analytics</div>
         <Popover>
@@ -38,7 +38,7 @@ const Header = () => {
             <Button
               variant={"outline"}
               className={cn(
-                "w-[280px] justify-start text-left font-normal",
+                "w-[220px] md:w-[280px] justify-start text-left font-normal",
                 !date && "text-muted-foreground"
               )}
             >
@@ -56,7 +56,7 @@ const Header = () => {
           </PopoverContent>
         </Popover>
       </div>
-      <div className="flex gap-4 items-center">
+      <div className="hidden lg:flex gap-4 items-center">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" size="icon">
